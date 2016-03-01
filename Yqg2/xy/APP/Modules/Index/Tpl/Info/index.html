@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$Think.config.WEB_NAME}-{$Think.config.WEB_TITLE}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+<script type="text/JavaScript" src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/JavaScript" src='__PUBLIC__/Js/bckToTop.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/qq_focus.js"></script>  
+<link rel="stylesheet" href="__PUBLIC__/Css/info.css" />
+</head>
+<body>
+<include file='Common:nav'/>
+<div class="focusWrap">
+<div class="focus">
+     
+    <div id="focus">
+        <ul>
+            <li><a href="http://www.shangfox.com" target="_blank"><img src="/Public/Images/focus1.jpg" alt="" /></a></li>
+            <li><a href="http://www.shangfox.com" target="_blank"><img src="/Public/Images/focus2.jpg" alt="" /></a></li>
+            <li><a href="http://www.shangfox.com" target="_blank"><img src="/Public/Images/focus4.jpg" alt="" /></a></li>
+        </ul>
+    </div>
+</div>
+</div>
+<div class="mainWrap">
+    <div class="main" id='mt0'>
+        <div class="indexThree">
+            <div class="tags">
+                <a href="#" class="img"><img src="/Public/Images/tag.gif" style="margin-top:19px;"/></a>
+                <h2>资深易经大师</h2>
+                <p>中国易经大师100%亲自授课，带您探索易学的无穷奥秘。</p>
+            </div>
+            <div class="tags">
+                <a href="#" class="img"><img src="/Public/Images/tag1.png"/></a>
+                <h2>全方位易经平台</h2>
+                <p>提供最优势的易经培训服务以及最新最全的易经培训书籍。</p>
+            </div>
+            <div class="tags">
+                <a href="#" class="img"><img src="/Public/Images/livechat.png"/></a>
+                <h2>7*24客户服务</h2>
+                <p>易辰网提供7*24小时客户服务，为您提供最专业的周易传统服务。</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="mainWrap">
+    <div class="main" id="mt0">
+        <div class="indexmain">
+            <div class="indexline"></div>
+            <div class="newnews">
+                <a href="/list-1.html" class="h2">新闻排行</a>
+                <ul class="box">
+                    <foreach name="top" item="v">
+                        <li><a href="{:U('/article-'.$v['id'])}">{$v.title}</a><span>{$v.time|date='m/d/Y',###}</span></li>
+                    </foreach>
+                </ul>
+                <a href="#" class="more">查看更多</a>
+            </div>
+            <div class="newcourse">
+                <h2>最新开课</h2>
+                <h3>邮件营销相对于短信营销的优势</h3>
+                <p>和短信营销一样，邮件营销也是一种维护客户关系、增加销售的有效手段。</p>
+                <a class="bm" href="#">立即报名</a>
+                <img src="/Public/Images/avator.jpg" class="avator"/>
+            </div>
+            <div class="indexline"></div>
+            <div class="indextwo">
+                <h2><a href="/list-1.html" title="易经周边知识">易经周边知识</a></h2>
+                <!-- <p>易经知识，全方位解析周易~</p> -->
+                <img src="/Public/Images/44.png"/>
+                <ul class="box">
+                    <foreach name="article" item="v">
+                        <li><a href="{:U('/article-'.$v['id'])}">{$v.title}</a><span>{$v.time|date='m/d/Y',###}</span></li>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="indextwo">
+                <h2><a href="/list-2.html" title="易学资讯">易学资讯</a></h2>
+                <!-- <p>易经知识，全方位解析周易~</p> -->
+                <img src="/Public/Images/77.png"/>
+                <ul class="box">
+                    <foreach name="zx" item="v">
+                        <li><a href="{:U('/article-'.$v['id'])}">{$v.title}</a><span>{$v.time|date='m/d/Y',###}</span></li>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="indexline"></div>
+            <div class="newpic">
+                <a href="/list-3.html" class="h2">培训视频</a>
+                <ul class="box">
+                    <foreach name="pic" item="v">
+                        <li>
+                        <a href="{:U('/article-'.$v['id'])}" class='t'>{$v.title}</a>
+                        <a href="{:U('/article-'.$v['id'])}" class='back'></a>
+                        <a href="{:U('/article-'.$v['id'])}" class='img'><img src="/Uploads/{$v.thumbnail}"/></a>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="indexline"></div>
+            <div class="newpic">
+                <a href="javascript:;" class="h2">合作伙伴</a>
+                <ul class="bd">
+                    <li>
+                        <a href="http://www.shangfox.com" class='img'><img src="/Public/Images/shangfox.png"/></a>
+                        <a href="http://www.shangfox.com" class='img2'><img src="/Public/Images/shangfox2.png"/></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class='img'><img src="/Public/Images/logo2.png"/></a>
+                        <a href="javascript:;" class='img2'><img src="/Public/Images/logo2h.png"/></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<include file="Common:footer"/>

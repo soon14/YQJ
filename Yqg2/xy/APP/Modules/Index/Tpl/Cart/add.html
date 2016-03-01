@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$Think.config.WEB_TITLE}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="__PUBLIC__/Css/main.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/user.css" />
+<script src="__PUBLIC__/Js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Js/archefoucs.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        $('nav ul li:nth-child(1) a').addClass('cur');
+    });
+</script>
+</head>
+<body>
+<include file='Common:nav'/>
+<div class="mainWrap">
+	<div class="main">
+        <div class="tipBox">
+            <h2>该商品已成功加入购物车！</h2>
+            <div class="alink">
+                <a href="/goods-{$Think.request.id}.html" class="btn-continue" target="_self">继续购物</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="/Index/Cart/index" class="btn-pay" target="_self">去购物车结算>></a>
+            </div>
+        </div>
+	</div>
+</div>
+<include file="Common:footer"/>

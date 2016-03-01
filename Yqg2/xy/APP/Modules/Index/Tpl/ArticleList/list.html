@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$sisterdata['name']}-{$Think.config.WEB_NAME}-{$Think.config.WEB_TITLE}</title>
+<meta name="description" content="<empty name="sisterdata['description']">{$Think.config.WEB_DESRIPTION}<else/>{$sisterdata['description']}</empty>" />
+<meta name="keywords" content="<empty name="sisterdata['keywords']">{$Think.config.WEB_KEYWORDS}<else/>{$sisterdata['keywords']}</empty>" />
+<include file='Common:css'/>
+</head>
+<body>
+<include file='Common:nav'/>
+
+<div class="mainWrap">
+    <div class="main">
+        <div class="sideBar fl">
+            <div class="box">
+                <div class="title"><strong>栏目导航</strong></div>
+                <div class="content">
+                    <div class="sideNav">
+                    <foreach name="sister" item="v">
+                        <if condition="$v['id'] eq $nowid">
+                            <a href="{:U('/list-'.$v['id'])}" class="cur">{$v.name}</a>
+                        <else/>
+                            <a href="{:U('/list-'.$v['id'])}">{$v.name}</a>
+                        </if>
+                    </foreach>
+                    </div>
+                </div>
+            </div>
+            <!-- {:W('SaleTop')} -->
+            <div class="searchbox">
+                    <form method="get" action="{:U(GROUP_NAME.'/Search/index')}">
+                        <input type="text" class="input" name="keyword"  value="搜索关键字..." onfocus="if(this.value == '搜索关键字...') this.value = ''" onblur="if(this.value =='') this.value = '搜索关键字...'"/>
+                        <input type="submit" class="submit" value="搜索"/>
+                        <!--<label><input type="radio" value="article" name="type" class="radio"/><span>文章</span></label>
+                        <label><input type="radio" value="caseshow" name="type" class="radio"/><span>案例</span></label> -->
+                    </form>
+            </div>
+            {:W('New',array('limit'=>5))}
+            <include file="Common:contact"/>
+        </div>
+
+        <div class="mainBar fr">
+            <div class="box">
+                <div class="title"><a href="/">首页</a> > {$sisterdata['name']}</div>
+                <div class="content mt20" id="url" title="{$url}">
+                    <ul class="articleUllist">
+                        <foreach name="article" item="v">
+                        <li>
+                            <a href="{:U('/article-'.$v['id'])}" class="articleUllistTitle">{$v.title}</a>
+                        </li>
+                        </foreach>
+                    </ul>
+                    <div class="pagesize">
+                        <if condition='count($article) eq 0'>无数据</if>
+                        {$page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Common:footer"/>

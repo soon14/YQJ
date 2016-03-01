@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link rel="stylesheet" href="/Public/Other/Css/public.css" />
+	</head>
+	<body>
+		<div class="navlist">
+			<a href="{:U(GROUP_NAME.'/System/webconfig')}">系统信息</a>
+			<a href="{:U(GROUP_NAME.'/System/verify')}">验证码</a>
+			<a href="{:U(GROUP_NAME.'/System/stmp')}" class="cur">邮件设置</a>
+		</div>
+		<form method="post" action="{:U(GROUP_NAME.'/System/stmpRun')}">
+			<table border="1" width="100%" class="table">
+				<tr>
+					<th align="right">管理员邮箱:</th>
+					<td>
+						<input type="text" class="len250" name="ADMIN_USER_EMAIL" value='{$Think.config.ADMIN_USER_EMAIL}'/> 
+					</td>
+				</tr>
+
+				<tr>
+					<th align="right" width="20%">邮件服务器:</th>
+					<td width="80%">
+						<input type="text" class="len250" name="SMTP_SERVER" value='{$Think.config.SMTP_SERVER}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">邮件服务器端口:</th>
+					<td>
+						<input type="text" class="len250" name="SMTP_PORT" value='{$Think.config.SMTP_PORT}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">SMTP用户邮箱:</th>
+					<td>
+						<input type="text" class="len250" name="SMTP_USER_EMAIL" value='{$Think.config.SMTP_USER_EMAIL}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">SMTP账户名:</th>
+					<td>
+						<input type="text" class="len250" name="SMTP_USER" value='{$Think.config.SMTP_USER}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">SMTP账户密码:</th>
+					<td>
+						<input type="password" class="len250" name="SMTP_PWD" value='{$Think.config.SMTP_PWD}'/> 
+					</td>
+				</tr>
+
+				<tr>
+					<th align="right">发送邮件类型:HTML,TXT(注意都是大写):</th>
+					<td>
+						<input type="text" class="len250" name="SMTP_MAIL_TYPE" value='{$Think.config.SMTP_MAIL_TYPE}'/>
+					</td>
+				</tr>
+
+				<tr>
+					<th align="right">超时时间:</th>
+					<td>
+						<input type="text" class="len250" name="SMTP_TIME_OUT" value='{$Think.config.SMTP_TIME_OUT}'/> 
+					</td>
+				</tr>
+
+				<tr>
+					<th align="right">邮箱验证(一般都要开启):</th>
+					<td>
+						<input type="text" class="len250" name="SMTP_AUTH" value='{$Think.config.SMTP_AUTH}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right"></th>
+					<td><input type="submit" value="修改"  class="submit"/></td>
+				</tr>
+			</table>
+			</form>
+	</body>
+</html>

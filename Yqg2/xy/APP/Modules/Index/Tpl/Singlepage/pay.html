@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$singlepage.title}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="/Data/Ueditor2/third-party/SyntaxHighlighter/shCoreDefault.css" />
+<script type="text/javascript" src="/Data/Ueditor2/third-party/SyntaxHighlighter/shCore.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.all();
+</script>
+</head>
+</body>
+<include file='Common:nav'/>
+<div class="pageNavWrap">
+    <div class="pageNav">
+        <foreach name="pagelist" item="v">
+            <if condition="$v['filename'] eq $filename">
+                <a href="{:U('/'.$v['filename'])}" class="cur">{$v.title}</a>
+            <else/>
+                <a href="{:U('/'.$v['filename'])}">{$v.title}</a>
+            </if>
+        </foreach>
+    </div>
+</div>
+
+<div class="mainWrap">
+    <div class="main">
+        <div class="singlepagemain">
+            <ul class="ulpay">
+                <li>
+                    <img src="/Public/Images/pay_alipay.jpg" class="img" original="/Public/Images/pay_alipay.jpg">
+                    <p>
+                        开户人：prisonbreakw@126.com<br>
+                        支付类型：支付宝<br>
+                    </p>
+                </li>
+                <li style="border-right: none;">
+                    <img src="/Public/Images/pay_qq.jpg" class="img" original="/Public/Images/pay_qq.jpg">
+                    <p>
+                        开户人：406333726<br>
+                        支付类型：财付通<br>
+                    </p>
+                </li>
+                <li>
+                    <img src="/Public/Images/pay_icbc.jpg" class="img" original="/Public/Images/pay_icbc.jpg" style="display: block;">
+                    <p>
+                        开户人：魏大程<br>
+                        开户行：中国工银行成都九里堤支行<br>
+                        号&nbsp;&nbsp;&nbsp;码：621 226 440 20200 66340<br>
+                    </p>
+                </li>
+                <li style="border-right: none;">
+                    <img src="/Public/Images/pay_ccb.jpg" class="img" original="/Public/Images/pay_ccb.jpg" style="display: block;">
+                    <p>
+                        开户人：魏大程<br>
+                        开户行：中国建设银行成都武侯支行<br>
+                        号&nbsp;&nbsp;&nbsp;码：6217 0038 1000 0792 229 <br>
+                    </p>
+                </li>
+                <li style="border-bottom: none;">
+                    <img src="/Public/Images/pay_abc.jpg" class="img" original="/Public/Images/pay_abc.jpg" style="display: block;">
+                    <p>
+                        开户人：魏大程<br>
+                        开户行：中国农行成都市通锦桥支行<br>
+                        号&nbsp;&nbsp;&nbsp;码：622 848 046 20235 93918 <br>
+                    </p>
+                </li> 
+                <li style="border-right: none;border-bottom: none;">
+                    <p><br>
+                        尚狐网络有以上支付方式，更多支付方式，敬请期待...<br>
+                        有疑问？点击<a href="/contact.html" title="联系我们" target="_blank">联系我们</a>
+                    </p>
+                </li>                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<include file="Common:footer"/>

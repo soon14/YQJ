@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link rel="stylesheet" href="/Public/Other/Css/public.css" />
+	</head>
+	<body>
+		<div class="navlist">
+			<a href="{:U(GROUP_NAME.'/Wish/index')}" class="cur">许愿列表</a>
+			<a href="{:U(GROUP_NAME.'/Wish/trach')}">回收站</a>
+		</div>
+		<table class="table">
+			<tr>
+				<td width="3%">ID</td>
+				<td width="6%">署名</td>
+				<td width="10%">愿望类型</td>
+				<td width="25%">愿望内容</td>
+				<td width="6%">状态</td>
+				<td width="10%">发布时间</td>
+				<td width="10%">操作</td>
+			</tr>
+			<foreach name="html" item="v">
+				<tr>
+					<td>{$v.id}</td>
+					<td>{$v.fromname}</td>
+					<td><div class="cc"><span class="cc{$v.class}">{$v.type}</span></div></td>
+					<td>{$v.content}</td>
+					<td><if condition="$v['statu'] eq 0"><span style="color:red">未审核</span><else/><span style="color:#aaa">已发布</span></if></td>
+					<td>{$v.time|date='Y-m-d H:i:s',###}</td>
+					<td>
+						<a href="{:U(GROUP_NAME.'/Wish/no',array('id'=>$v['id']))}">不准通过</a>
+						<a href="javascript:if(confirm('确实要删除吗?'))location='{:U(GROUP_NAME.\'/Wish/delete\',array(\'id\'=>$v[\'id\']))}'">删除</a>
+					</td>
+				</tr>
+			</foreach>
+			<tr>
+				<td colspan="6"><div class="pagesize">{$page}</div></td>
+			</tr>
+		</table>
+	</body>
+</html>

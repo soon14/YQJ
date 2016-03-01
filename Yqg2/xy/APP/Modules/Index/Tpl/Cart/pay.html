@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$Think.config.WEB_TITLE}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="__PUBLIC__/Css/cart.css" />
+</head>
+<body>
+<include file='Common:nav'/>
+<div class="mainWrap">
+	<div class="main">
+        <div class="tipBox">
+            <h2>订单提交成功，立即支付！</h2>
+            <div class="alink">
+                <a href="/shop-{$Think.request.id}.html" class="btn-continue" target="_self">去支付宝支付>></a>
+            </div>
+        </div>
+	</div>
+</div>
+
+<include file="Common:footer"/>

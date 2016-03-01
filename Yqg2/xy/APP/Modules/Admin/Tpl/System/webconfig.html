@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link rel="stylesheet" href="/Public/Other/Css/public.css" />
+	</head>
+	<body>
+		<div class="navlist">
+			<a href="{:U(GROUP_NAME.'/System/webconfig')}" class="cur">网站设置</a>
+			<a href="{:U(GROUP_NAME.'/System/verify')}">验证码</a>
+			<a href="{:U(GROUP_NAME.'/System/stmp')}">邮件设置</a>
+		</div>
+		<form method="post" action="{:U(GROUP_NAME.'/System/webconfigRun')}">
+			<table border="1" width="100%" class="table">
+				<tr>
+					<th align="right" width="20%">网站名称:</th>
+					<td width="80%">
+						<input type="code" class="len250" name="WEB_NAME" value='{$Think.config.WEB_NAME}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">网站域名:</th>
+					<td>
+						<input type="code" class="len250" name="WEB_URL" value='{$Think.config.WEB_URL}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">网站标题:</th>
+					<td>
+						<input type="code" class="len250" name="WEB_TITLE" value='{$Think.config.WEB_TITLE}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">顶部欢迎词:</th>
+					<td>
+						<input type="code" class="len250" name="WEB_WELCOME" value='{$Think.config.WEB_WELCOME}'/> 
+					</td>
+				</tr>				<tr>
+					<th align="right">关键词:</th>
+					<td>
+						<input type="code" class="len250" name="WEB_KEYWORDS" value='{$Think.config.WEB_KEYWORDS}'/> 
+					</td>
+				</tr>
+				<tr>
+					<th align="right">描述:</th>
+					<td>
+						<textarea rows="6" cols="100" name="WEB_DESRIPTION">{$Think.config.WEB_DESRIPTION}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th align="right">网站版权:</th>
+					<td>
+						<textarea rows="6" cols="100" name="WEB_COPYRIGHT" style="height:120px;">{$Think.config.WEB_COPYRIGHT}</textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td><input type="submit" value="修改" class="submit" class="submit"/></td>
+				</tr>
+			</table>
+			</form>
+	</body>
+</html>

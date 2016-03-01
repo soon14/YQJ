@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$Think.config.WEB_TITLE}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/cart.css" />
+<script type="text/JavaScript" src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript">
+    $(function(){
+        $('nav ul li:nth-child(1) a').addClass('cur');
+    });
+    function changeNum(id){
+    	var $fm = document.getElementById('form'+id);
+    	// alert($fm.num.value);
+    	var $url = $fm.action+'/id/'+id;
+    	$fm.action = $url;
+    	$fm.submit();
+    }
+</script>
+</head>
+<body>
+<include file='Common:nav'/>
+
+<div class="mainWrap">
+	<div class="main">
+		<div class="cartBox">
+			<div class="title">购物车</div>
+			<div class="content">
+				<table>
+					<tr>
+						<th>id</th>
+						<th>名称</th>
+						<th>图片</th>
+						<th>数量</th>
+						<th>价格</th>
+						<th>删</th>
+					</tr>
+					<foreach name='cart' item="v">
+						<form name="forms" method="post" action="/Index/Cart/updateNum" id="form{$v.id}">
+							<tr>
+								<td>{$v.id}</td>
+								<td>{$v.title}</td>
+								<td><img src="/Uploads/{$v.thumbnail}" style="width:100px;height:100px"/></td>
+								<td><input name="num" value="{$v.num}" onblur="changeNum({$v.id})"/></td>
+								<td>{$v.price}</td>
+								<td><a href="/Index/Cart/delete/id/{$v.id}">×</a></td>
+							</tr>
+						</form>
+					</foreach>
+					<tr>
+						<td colspan=6><a href="/Index/Cart/deleteAll">全删</a></td>
+					</tr>
+					<tr>
+						<td colspan='6' style="text-align:right;vertical-align: middle;">
+							<empty name="Think.session.uid">
+								<a href="/User/User/login/referer/cart" target="_blank" class="nologin">登录后结算</a>
+								<else/>
+								<a href="/Index/Cart/go" class="go"><img src="/Public/Images/go.png"/></a>
+							</empty>
+							<div class="totalprice">总价：<b>{$pricecount}</b> 元</div>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+		</div>			
+	</div>
+</div>
+<include file="Common:footer"/>

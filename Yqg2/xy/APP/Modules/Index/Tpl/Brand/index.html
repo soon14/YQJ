@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$sisterdata['name']}-{$Think.config.WEB_NAME}-{$Think.config.WEB_TITLE}</title>
+<meta name="description" content="<empty name="sisterdata['description']">{$Think.config.WEB_DESRIPTION}<else/>{$sisterdata['description']}</empty>" />
+<meta name="keywords" content="<empty name="sisterdata['keywords']">{$Think.config.WEB_KEYWORDS}<else/>{$sisterdata['keywords']}</empty>" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/main.css" />
+<script type="text/javascript">
+    $(function(){
+        if($('.mainWrap').attr('title') == 1){
+            $('nav ul li:nth-child(3) a').addClass('cur');//栏目高亮
+        }else{
+            $('nav ul li:nth-child(2) a').addClass('cur');//栏目高亮
+        }
+    });
+</script>
+</head>
+<body>
+<include file='Common:nav'/>
+<!-- <div class="mainWrap">
+    <div class="main" style="margin-top:0;">
+        <img src="/Public/Images/banner.png"/>
+    </div>
+</div> -->
+<div class="mainWrap" title="{$nowid}">
+    <div class="main">
+        <div class="sideBar fl">
+            {:W('SaleTop')}
+            {:W('New',array('limit'=>5))}
+            <include file="Common:contact"/>
+        </div>
+
+        <div class="mainBar fr">
+            <div class="box">
+                <div class="title">品牌中心</div>
+                <div class="content mt20" id="url" title="{$url}">
+                    <ul class="brandUl">
+                        <foreach name="brand" item="v">
+                            <li>
+                                <a href="{:U('/brand-'.$v['id'])}">
+                                    <h4>{$v.name}</h4>
+                                    <img src="/Uploads/brand/{$v.brandlogo}"/>
+                                </a>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="title">热卖商品</div>
+                <div class="content mt20">
+                    <ul class="goodsul">
+                        <foreach name="html" item="v">
+                        <li>
+                            <a href="{:U('/goods-'.$v['id'])}" class="img">
+                                <empty name="v['thumbnail']">
+                                <img src="/Public/Images/default.gif"/>
+                                <else/>
+                                <img src="/Uploads/{$v.thumbnail}"/>
+                                </empty>
+                            </a>
+                            <a href="{:U('/goods-'.$v['id'])}" class="goodstitle">{$v.title}</a>
+                            <p>价格：{$v.price}</p>
+                            <div class="alink">
+                                <a href="/index/Cart/add/id/{$v.id}/num/1"><img src="/Public/Images/addCartSmall.png"/></a>
+                                <a href="{:U('/goods-'.$v['id'])}"><img src="/Public/Images/look.png"/></a>
+                            </div>
+                        </li>
+                        </foreach>
+                    </ul>
+                    <div class="pagesize">
+                        <if condition='count($html) eq 0'>无数据</if>
+                        {$page}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<include file="Common:footer"/>

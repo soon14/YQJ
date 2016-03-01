@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$Think.config.WEB_TITLE}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+<script type="text/JavaScript" src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/JavaScript" src='__PUBLIC__/Js/bckToTop.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/qq_focus.js"></script>  
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+
+</head>
+<body>
+<include file='Common:nav'/>
+   
+<div class="mainWrap">
+    <div class="main" id='mt0'>
+        <div class="xuyuanbox">
+            <ul class="wishul" style="width:1200px;">
+                <foreach name="html" item="v">
+                    <li>
+                        <b class="c{$v.class}">{$v.type}</b>
+                        <a href="{:U('/num-'.$v['id'])}" title="点击查看{$v.fromname}的愿望">
+                        <p>{$v.content|truncate_cn=200,'...',0}</p>
+                        </a>
+                        <span>ID:{$v.id}&nbsp;&nbsp;{$v.time|date='y-m-d H:i:s',###}<em>{$v.fromname}</em></span>
+                    </li>
+                </foreach>
+            </ul>
+            <div class="pagesizee">
+                <if condition='count($html) eq 0'>无数据</if>
+                {$page}
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+//<!CDATA[
+    var bodyBgs = [];
+    bodyBgs[0] = "__PUBLIC__/Images/background1.jpg";
+    bodyBgs[1] = "__PUBLIC__/Images/background2.jpg";
+    bodyBgs[2] = "__PUBLIC__/Images/background21.jpg";
+    bodyBgs[3] = "__PUBLIC__/Images/background4.jpg";
+    bodyBgs[4] = "__PUBLIC__/Images/background16.jpg";
+    bodyBgs[5] = "__PUBLIC__/Images/background8.jpg";
+    bodyBgs[6] = "__PUBLIC__/Images/background18.jpg";
+    bodyBgs[7] = "__PUBLIC__/Images/background12.jpg";
+    var randomBgIndex = Math.round( Math.random() * 7 );
+    document.write('<style>body{background:url(' + bodyBgs[randomBgIndex] + ') no-repeat center top}</style>');
+//]]>
+</script>
+<include file="Common:footer"/>

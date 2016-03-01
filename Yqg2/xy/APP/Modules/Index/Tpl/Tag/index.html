@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>{$Think.config.WEB_NAME}-{$Think.config.WEB_TITLE}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+</head>
+<body>
+<include file='Common:nav'/>
+<div class="pageNavWrap">
+    <div class="pageNav">
+        <span>包含Tag: <b>{$tagname}</b> 的文章</span>
+    </div>
+</div>
+<div class="mainWrap">
+    <div class="main">
+        <div class="leftBar mT15">
+            <div class="box">
+                <div class="content">
+                    <ul class="articleList">
+                        <foreach name="article" item="v">
+                        <li>
+                            <div class="info">
+                                <span>
+                                    <script type="text/javascript" src="{:U(GROUP_NAME.'/ArticleList/clickNum',array('id'=>$v['id']))}"></script>
+                                </span>
+                                <strong><a href="{:U('/list-'.$v['ppid'])}">{$v.name}</a></strong>                               
+                            </div>
+                            <h2><a href="{:U('/article-'.$v['id'])}" class="title">{$v.title}</a></h2>
+                            <div class="text">
+                                <empty name="v['thumbnail']">
+                                <img src="/Public/Images/default.gif"/>
+                                <else/>
+                                <img src="/Uploads/{$v.thumbnail}"/>
+                                </empty>
+                                <p>{$v.summary}</p>
+                            </div>
+                        </li>
+                        </foreach>
+                    </ul>
+                    <if condition='count($article) eq 0'>无数据</if>
+                    <div class="pagesize">{$page}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rightBar mT15">
+            <include file="Common:right"/>
+        </div>
+    </div>
+</div>
+
+<include file="Common:footer"/>

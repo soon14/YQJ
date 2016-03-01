@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$singlepage.title}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="/Data/Ueditor2/third-party/SyntaxHighlighter/shCoreDefault.css" />
+<script type="text/javascript" src="/Data/Ueditor2/third-party/SyntaxHighlighter/shCore.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.all();
+    $(function(){
+        $('nav ul li:nth-child(2) a').addClass('cur');
+    });
+</script>
+</head>
+</body>
+<include file='Common:nav'/>
+<div class="pageNavWrap">
+    <div class="pageNav">
+        <foreach name="pagelist" item="v">
+            <if condition="$v['filename'] eq $filename">
+                <a href="{:U('/'.$v['filename'])}" class="cur">{$v.title}</a>
+            <else/>
+                <a href="{:U('/'.$v['filename'])}">{$v.title}</a>
+            </if>
+        </foreach>
+    </div>
+</div>
+
+<div class="mainWrap">
+    <div class="main">
+        <div class="singlepagemain">
+            <div class="webBox">
+                <div class="webBoxGo">
+                    <a href="/message/index.php?ser_type=web" class="gobt1"></a><a href="/message/index.php?ser_type=web" class="gobt2"></a>
+                </div>
+                <div class="centerBox" style="width: 1200px;">
+                    <table class="table2" border="0" cellspacing="1">
+                        <tbody><tr>
+                            <th width="60" height="30" class="on1">套餐</th>
+                            <th width="260" class="on2">经济型（模板网站）</th>
+                            <th width="260" class="on3">标准型（个性设计）</th>
+                            <th width="260" class="on4">门户型（个性设计）</th>
+                            <th width="260" class="on5">商城型</th>
+                        </tr>
+                        <tr>
+                            <td class="on1">定位</td>
+                            <td class="on2">1、采用现成网站进入更改，不限页数；<br>
+                                2、适用于小型企业，页面简洁，以企业宣传、产品展示为主；<br>
+                                3、有数据库及后台管理；</td>
+                            <td class="on3">1、采用尚狐网络自行开发网站系统制作；<br>
+                                2、全新的网页设计，突出宣传公司形象及展示产品；<br>
+                                3、强大的数据库及后台管理；</td>
+                            <td class="on4">1、采用尚狐网络自行开发网站系统制作；<br>
+                                2、资深设计师操刀，大气精美设计,用户体验更佳；<br>
+                                3、强大的数据库及后台管理；</td>
+                            <td class="on5">精美的网店型页面设计，适合网上开店经营</td>
+                        </tr>
+                        <tr>
+                            <td class="on1">功能</td>
+                            <td class="on2">首页<br>
+                                公司简介<br>
+                                产品展示<br>
+                                新闻动态<br>
+                                客户案例<br>
+                                人才招聘<br>
+                                在线留言<br>
+                                联系我们<br>
+                                全站伪静态化<br/>
+                                在线QQ\流量统计</td>
+                            <td class="on3">首页<br>
+                                公司简介<br>
+                                产品展示<br>
+                                新闻动态<br>
+                                客户案例<br>
+                                人才招聘<br>
+                                在线留言<br>
+                                联系我们<br>
+                                全站伪静态化<br/>
+                                在线QQ\流量统计</td>
+                            <td class="on4">首页<br>
+                                门户首页<br>
+                                产品展示<br>
+                                新闻动态<br>
+                                客户案例<br>
+                                人才招聘<br>
+                                在线留言<br>
+                                联系我们<br>
+                                全站伪静态化<br/>
+                                在线QQ\流量统计</td>                            
+                            <td class="on5">产品发布系统<br>
+                                文章发布系统<br>
+                                完善的会员系统<br>
+                                积分系统<br>
+                                订单管理系统<br>
+                                购物车系统<br>
+                                商品搜索系统<br>
+                                全站伪静态化<br/>
+                                主流在线支付系统<br>
+                                完善物流配送系统</td>
+                        </tr>  
+                        <tr>
+                            <td class="on1">周期</td>
+                            <td class="on2">2周</td>
+                            <td class="on3">5周</td>
+                            <td class="on4">8周</td>
+                            <td class="on5">12周</td>
+                        </tr>
+                        <tr>
+                            <td class="on1">售后</td>
+                            <td class="on2">免费技术维护，免费提供ICP证备案</td>
+                            <td class="on3">免费技术维护，免费提供ICP证备案</td>
+                            <td class="on4">免费技术维护，免费提供ICP证备案</td>
+                            <td class="on5">免费技术维护，免费提供ICP证备案</td>
+                        </tr>         
+                        <tr>
+                            <td class="on1">推广</td>
+                            <td class="on2">可自定义网站关键词，以利于搜索引擎排名；搜索引擎排名基本优化设置, 免费Google、Baidu等搜索引擎登陆</td>
+                            <td class="on3">可自定义网站关键词，以利于搜索引擎排名；带优化功能的网站结构设计, 免费Google、Baidu等搜索引擎登陆</td>
+                            <td class="on4">可自定义网站关键词，以利于搜索引擎排名；带优化功能的网站结构设计,传授或设置相关具有商业价值的长尾关健字</td>
+                            <td class="on5">可自定义网站关键词，以利于搜索引擎排名；带优化功能的网站结构设计, 免费Google、Baidu等搜索引擎登陆</td>
+                        </tr>
+                        <tr>
+                            <td class="on1">报价</td>
+                            <td class="on2">￥4800</td>
+                            <td class="on3">￥8000</td>
+                            <td class="on4">￥12000</td>
+                            <td class="on5">￥48800</td>
+                        </tr>
+                        <tr>
+                            <td class="on1">语言</td>
+                            <td class="on2">增加英文版 +2000元（不包翻译）</td>
+                            <td class="on3">增加英文版 +3000元（不包翻译）</td>
+                            <td class="on4">增加英文版 +4000元（不包翻译）</td>
+                            <td class="on5">增加英文版 +8000元（不包翻译）</td>
+                        </tr> 
+                        <tr>
+                            <td class="on1">维护</td>
+                            <td class="on2">首半年免费<br/>￥1200.00/年</td>
+                            <td class="on3">首半年免费<br/>￥2000.00/年</td>
+                            <td class="on4">首半年免费<br/>￥3000.00/年</td>
+                            <td class="on5">首半年免费<br/>￥4000.00/年</td>
+                        </tr>
+                        <tr>
+                            <td class="on1">订购</td>
+                            <td class="on2"><a class="submita" href="#submitform" id="tosubmitforma">咨询购买&gt;</a></td>
+                            <td class="on3"><a class="submita" href="#submitform" id="tosubmitforma">咨询购买&gt;</a></td>
+                            <td class="on4"><a class="submita" href="#submitform" id="tosubmitforma">咨询购买&gt;</a></td>
+                            <td class="on5"><a class="submita" href="#submitform" id="tosubmitforma">咨询购买</a></td>
+                        </tr>                         
+                    </tbody></table>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Common:footer"/>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$sisterdata['name']}-{$Think.config.WEB_NAME}-{$Think.config.WEB_TITLE}</title>
+<meta name="description" content="<empty name="sisterdata['description']">{$Think.config.WEB_DESRIPTION}<else/>{$sisterdata['description']}</empty>" />
+<meta name="keywords" content="<empty name="sisterdata['keywords']">{$Think.config.WEB_KEYWORDS}<else/>{$sisterdata['keywords']}</empty>" />
+<include file='Common:css'/>
+</head>
+<body>
+<include file='Common:nav'/>
+<div class="pageNavWrap">
+    <div class="pageNav">
+        <if condition="$sisterdata['pid'] eq 0">
+            <span>案例中心</span>
+        <else/>
+            <span><a href="{:U('/case-list-'.$parent[0]['id'])}">{$parent[0]['name']}</a></span>
+        </if>
+        <foreach name="sister" item="v">
+            <if condition="$v['id'] eq $id">
+                <a href="{:U('/case-list-'.$v['id'])}" class="cur">{$v.name}</a>
+            <else/>
+                <a href="{:U('/case-list-'.$v['id'])}">{$v.name}</a>
+            </if>
+        </foreach>
+    </div>
+</div>
+
+<div class="mainWrap">
+    <div class="main" style="min-height:400px;">
+        <ul class="case-list">
+            <foreach name="case" item="v">
+            <li>
+                <a class="seeicon" href="{:U('/case-'.$v['id'])}"></a>
+                <a class="imgback" href="{:U('/case-'.$v['id'])}"></a>
+                <a class="img" href="{:U('/case-'.$v['id'])}"><img src="/Uploads/{$v.thumbnail}"/></a>
+                <a class="title" href="{:U('/case-'.$v['id'])}">{$v.title}</a>
+            </li>
+            </foreach>
+            <li>
+                <div class="ad265">
+                <script type="text/javascript">
+                    /*265*169 创建于 2014-08-03*/
+                    var cpro_id = "u1643377";
+                </script>
+                <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+                </div>
+                <a class="title" href="javascript:;">百度赞助广告</a>
+            </li>
+        </ul>
+
+        <if condition='count($case) eq 0'>无数据</if>
+        <div >{$page}</div>
+    </div>
+</div>
+
+<include file="Common:footer"/>

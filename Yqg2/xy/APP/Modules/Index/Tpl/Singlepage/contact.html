@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$singlepage.title}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="/Data/Ueditor2/third-party/SyntaxHighlighter/shCoreDefault.css" />
+<script type="text/javascript" src="/Data/Ueditor2/third-party/SyntaxHighlighter/shCore.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.all();
+    $(function(){
+        $('nav ul li:nth-child(7) a').addClass('cur');
+    });
+</script>
+</head>
+</body>
+<include file='Common:nav'/>
+<div class="pageNavWrap">
+    <div class="pageNav">
+        <foreach name="pagelist" item="v">
+            <if condition="$v['filename'] eq $filename">
+                <a href="{:U('/'.$v['filename'])}" class="cur">{$v.title}</a>
+            <else/>
+                <a href="{:U('/'.$v['filename'])}">{$v.title}</a>
+            </if>
+        </foreach>
+    </div>
+</div>
+
+<div class="mainWrap">
+    <div class="main">
+        <div class="mainBodyContent mT20" style="background: url(/Public/Images/contact.jpg) no-repeat 480px 20px;padding-bottom: 50px;padding-top:20px;">
+            <p>网站部门：<br>
+            负责人：up<br>
+            <span class="span">在线咨询：</span><a target="_blank" class="qq1" href="http://wpa.qq.com/msgrd?v=3&amp;uin=406333726&amp;site=qq&amp;menu=yes"></a><br>
+            业务咨询：028-85324865<br>
+            联系QQ：406333726<br>
+            联系手机：13980835783<br>
+            售后服务：028-85324865</p>
+
+            <p>安卓开发部门：<br>
+            负责人：小江<br>
+            <span class="span">在线咨询：</span><a target="_blank" class="qq2" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2296465312&amp;site=qq&amp;menu=yes"></a><br>
+            联系QQ：2296465312 <br>
+            联系手机：15196625197<br>
+            电子邮箱：2296465312@qq.com</p>
+            
+            <p style="color: #e26;display: none;">直接点击上面的qq图标即可进行咨询，我们会认真对待每一个客户，希望您对我们的服务进行监督...<br>尚狐的发展离不开您的支持...</p>
+        </div>
+    </div>
+</div>
+
+<include file="Common:footer"/>

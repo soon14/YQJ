@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$Think.config.WEB_TITLE}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="__PUBLIC__/Css/cart.css" />
+<script type="text/javascript">
+	window.onload = function(){
+		var person = document.getElementById('person');
+		var company = document.getElementById('company');
+		company.onclick = function(){
+			document.getElementById('companyName').style.display = 'block';
+		}
+		person.onclick = function(){
+			document.getElementById('companyName').style.display = 'none';
+		}
+
+		//通过事件来判断是否显示新增
+		$('#newaddress').click(function(){
+			$('.addaddress').css('display','block');
+		});
+		$('.address').click(function(){
+			$('.addaddress').css('display','none');
+		});
+
+		$('.logisticsid:first').attr('checked','checked');//将第一个物流方式设置选中状态
+		$('*[name=paymethod]:last').attr('checked','checked');//将第一个收货地址设置选中状态
+		$('*[name=addressid]:first').attr('checked','checked');//将第一个收货地址设置选中状态
+		$('#logisticsprice').text($('.logisticsid:first').attr('title'));//将物流的第一个值给底部物流价格
+
+		//计算总价
+		var logisticsprice = $('#logisticsprice').text();
+		var pricecount = $('#pricecount').text();
+		var free = $('#free').text();
+		var priceall = parseFloat(logisticsprice)+parseFloat(pricecount);
+
+		$('#priceall').text(priceall);
+		$('*[name=priceall]').attr('value',priceall);
+
+		//判断，如果余额大于总价，就可以用余额付款
+		if (free > priceall) {
+			$('#freepay').css('display','block');
+			$('#freetips').css('display','none');
+		}else{
+			$('#freepay').css('display','none');
+			$('#freetips').css('display','block');
+		}
+
+		//根据选择不同的物流方式，更改物流价格
+		$('.logisticsid').click(function(){
+			var logisticsprice = parseFloat($(this).attr('title'));
+			$('#logisticsprice').text(logisticsprice);
+			//如果更改了物流，就重新计算价格
+			var priceall = parseFloat(logisticsprice)+parseFloat(pricecount);
+			$('#priceall').text(priceall);
+			$('*[name=priceall]').attr('value',priceall);
+
+			//如果更改了物流导致总价降低，然后在进行余额和总价相比较，大则可能余额支付，否则反之
+			if (free > priceall) {
+				$('#freepay').css('display','block');
+				$('#freetips').css('display','none');
+			}else{
+				$('#freepay').css('display','none');
+				$('#freetips').css('display','block');
+			}
+		})
+
+		//给input传值赋值
+		$('*[name=priceall]').attr('value',priceall);
+	}
+</script>
+</head>
+<body>
+<include file='Common:nav'/>
+
+<div class="mainWrap">
+	<div class="main">
+		<div class="cartBox">
+			<form action="/Index/Cart/order" method="post">
+				<input type="hidden" name="uid" value="{$Think.session.uid}"/>
+				<div class="title">订单号：{$serial} <input type="hidden" name="serial" value="{$serial}" /></div>
+				<div class="content">
+					<div class="contentTitle">
+						收货人信息
+					</div>
+					<div class="contentBox">
+						<foreach name="address" item="v">
+							<p><input type="radio" name="addressid"value="{$v.id}"  class="address"/>&nbsp;&nbsp;{$v.name}&nbsp;{$v.address}&nbsp;{$v.tel}&nbsp;&nbsp;</p>
+						</foreach>
+						<p><input type="radio" name="addressid" value="newaddress" id="newaddress"/>&nbsp;&nbsp;使用新地址</p>
+						<hr/>
+
+						<div class="addaddress" style="display:<empty name='address'>block<else/>none</empty>;">
+							<p>收货人名：<input type="text" name="name" value="{$userinfo.username}"></p>
+							<p>电　　话：<input type="text" name="tel" value="{$userinfo.tel}"></p>
+							<p>电子邮件：<input type="text" name="email" value="{$userinfo.email}"></p>
+							<p>地　　址：<input type="text" name="address" value="{$userinfo.address}"></p>
+						</div>
+					</div>
+					<div class="contentTitle">
+						支付方式： 
+					</div>
+					<div class="contentBox">
+						<p>余额：<b id="free">{$userinfo.free}</b> 元&nbsp;&nbsp;&nbsp;<span id="freetips" style="display:block">余额不足，请选择其它支付方式</span></p>
+						<p style="display:none;" id='freepay'><input type="radio" name="paymethod" value="余额支付"/>&nbsp;&nbsp;余额支付</p>
+						<p><input type="radio" name="paymethod" value="支付宝"/>&nbsp;&nbsp;支付宝</p>
+					</div>
+					<div class="contentTitle">
+						配送方式： 
+					</div>
+					<div class="contentBox">
+						<foreach name="logistics" item="v">
+							<p><input type="radio" class="logisticsid" name="logisticsid" value="{$v.id}" title="{$v.price}"/>&nbsp;&nbsp;{$v.name}&nbsp;&nbsp;&nbsp;邮费：&nbsp;&nbsp;{$v.price}元</p>
+						</foreach>
+					</div>
+					<div class="contentTitle">
+						发票： 
+					</div>
+					<div class="contentBox">
+						<p>
+							<label><input type="radio" name="invoice" id="person" checked="checked" value="个人"/>&nbsp;&nbsp;个人</label>
+							<label><input type="radio" name="invoice" id="company" value="企业"/>&nbsp;&nbsp;企业</label>
+							<p id="companyName"  style="display:none">
+							企业名称：<input type="text" name="companyName"/></p>
+						</p>
+					</div>
+					<div class="contentOrder">
+						<input type="submit" class="submit" value="提交订单"/>
+						<p>商品总价：<b id="pricecount">{$pricecount}</b> RMB&nbsp;&nbsp;&nbsp;
+							快递费：<b id="logisticsprice"></b> RMB&nbsp;&nbsp;&nbsp;
+							总价是：<b id="priceall"></b> RMB
+							<input type="hidden" value="{$pricecount}" name="pricecount"/>
+							<input type="hidden" value="" name="priceall"/>
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<include file="Common:footer"/>
